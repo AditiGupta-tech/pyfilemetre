@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyfilemetre"
+version = "0.1.4"
+description = "pyfilemetre is a Python CLI tool that analyzes code using AST — counting functions, classes, and missing docstrings, and generating Markdown reports."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+
+authors = [
+  { name = "Aditi Gupta", email = "aditig135@gmail.com" }
+]
+
+dependencies = [
+  "tabulate>=0.9.0"
+]
+
+keywords = ["python", "pyfilemetre", "cli", "code analysis", "AST", "metrics", "report"]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers"
+]
+
+[project.urls]
+Homepage = "https://pypi.org/project/pyfilemetre/"
