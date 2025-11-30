@@ -2,6 +2,7 @@ import sys
 import os
 import time
 import argparse
+import builtins
 from .analyzer import CodeAnalyzer
 
 def show_spinner(task_name="Getting information"):
@@ -10,6 +11,10 @@ def show_spinner(task_name="Getting information"):
         time.sleep(0.4)
         print(".", end="", flush=True)
     print(" Done!\n")
+
+if getattr(builtins, "_pyfilemetre_running", False):
+    raise SystemExit(0)
+builtins._pyfilemetre_running = True
 
 def main():
     parser = argparse.ArgumentParser(

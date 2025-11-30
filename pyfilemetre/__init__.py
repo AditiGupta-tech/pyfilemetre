@@ -8,5 +8,5 @@ Counts functions, classes, and docstrings — and produces summaries and Markdow
 
 from .analyzer import CodeAnalyzer
 
-__version__ = "0.1.0"
+__version__ = "0.1.7"
 __all__ = ["CodeAnalyzer"]

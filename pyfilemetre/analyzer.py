@@ -27,16 +27,29 @@ class CodeAnalyzer:
                 for f in files:
                     if f.endswith(".py"):
                         py_files.append(os.path.join(root, f))
-            return py_files
+            # ✅ Deduplicate and sort to avoid duplicate file entries
+            return list(sorted(set(py_files)))
         else:
             raise ValueError("Path must be a Python file or a directory containing Python files.")
 
     def _analyze_file(self, file_path):
         """Analyze one Python file and extract stats."""
-        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-            code = f.read()
+        try:
+            with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                code = f.read()
+            tree = ast.parse(code)
+        except SyntaxError:
+            # Handle files that can't be parsed due to syntax errors
+            return {
+                "file": file_path,
+                "function_count": 0,
+                "class_count": 0,
+                "functions": [],
+                "classes": [],
+                "missing_function_docs": 0,
+                "missing_class_docs": 0,
+            }
 
-        tree = ast.parse(code)
         functions, classes = [], []
 
         for node in ast.walk(tree):
@@ -73,7 +86,10 @@ class CodeAnalyzer:
 
         total_functions = sum(f["function_count"] for f in file_summaries)
         total_classes = sum(f["class_count"] for f in file_summaries)
-        missing_docs = sum(f["missing_function_docs"] + f["missing_class_docs"] for f in file_summaries)
+        missing_docs = sum(
+            f["missing_function_docs"] + f["missing_class_docs"]
+            for f in file_summaries
+        )
 
         project_summary = {
             "total_files": len(file_summaries),
@@ -110,7 +126,12 @@ class CodeAnalyzer:
             f.write("| File | Functions | Classes | Missing Docs |\n")
             f.write("|------|------------|----------|---------------|\n")
             for fsum in result["files"]:
-                f.write(f"| {os.path.basename(fsum['file'])} | {fsum['function_count']} | {fsum['class_count']} | {fsum['missing_function_docs'] + fsum['missing_class_docs']} |\n")
+                f.write(
+                    f"| {os.path.basename(fsum['file'])} | "
+                    f"{fsum['function_count']} | "
+                    f"{fsum['class_count']} | "
+                    f"{fsum['missing_function_docs'] + fsum['missing_class_docs']} |\n"
+                )
 
             f.write("\n## 📈 Project Totals\n")
             for key, value in result["project"].items():

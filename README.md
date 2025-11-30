@@ -75,29 +75,30 @@ python -m pyfilemetre "C:\Users\You\Desktop\demo_project" --no-md
 
 -----
 
-## Example Output
+## Complete Flow
+>Installation of pyfilemetre:
 
-**Terminal summary:**
+![installation](https://raw.githubusercontent.com/AditiGupta-tech/pfm-assets/refs/heads/main/Screenshot%202025-11-30%20145346.png)
 
-```
-## 📈 Project Totals
-  Total Files: 5
-  Total Functions: 20
-  Total Classes: 1
-  Total Missing Docstrings: 13
+>Information about pyfilemetre:
 
-# 🧩 pyfilemetre Report
-| File | Functions | Classes | Missing Docs |
-|------|------------|----------|---------------|
-| setup.py | 0 | 0 | 0 |
-| analyzer.py | 6 | 1 | 1 |
-| cli.py | 2 | 0 | 2 |
-| __init__.py | 0 | 0 | 0 |
-| test_analyzer.py | 12 | 0 | 10 |
-```
+![information](https://raw.githubusercontent.com/AditiGupta-tech/pfm-assets/refs/heads/main/Screenshot%202025-11-30%20145444.png) 
 
-  * **Markdown report:** `report.md` generated with the same details per file.
+>Using pyfilemetre to get the summary of your codebase without saving the file:
 
+![output1.1](https://raw.githubusercontent.com/AditiGupta-tech/pfm-assets/refs/heads/main/Screenshot%202025-11-30%20145547.png)
+
+>Gives same result if you use `--no-md`:
+
+![output1.2](https://raw.githubusercontent.com/AditiGupta-tech/pfm-assets/refs/heads/main/Screenshot%202025-11-30%20145814.png)
+
+>Generating summary and saving the report `(notice how i didn't enclose the path with "")`:
+
+![output2](https://raw.githubusercontent.com/AditiGupta-tech/pfm-assets/refs/heads/main/Screenshot%202025-11-30%20150115.png)
+
+>The report:
+
+![report](https://raw.githubusercontent.com/AditiGupta-tech/pfm-assets/refs/heads/main/Screenshot%202025-11-30%20150305.png)
 
 -----
 
