@@ -26,6 +26,16 @@ pip install pyfilemetre
 
 -----
 
+## Local Development
+
+If you are building the project locally, run:
+
+**`python -m build`**
+
+This automatically generates the *.egg-info/ and dist/ directories. The dist/ directory contains .tar.gz and .whl files: .tar.gz is a source distribution containing the project's source files, while .whl (Wheel) is a pre-built Python distribution designed for faster and easier installation.
+
+-----
+
 ## Usage
 
 > Run pyfilemetre on a Python file or directory:

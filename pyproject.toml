@@ -8,7 +8,7 @@ version = "0.1.7"
 description = "pyfilemetre is a Python CLI tool that analyzes code using AST — counting functions, classes, and missing docstrings, and generating Markdown reports."
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT"
 
 authors = [
   { name = "Aditi Gupta", email = "aditig135@gmail.com" }
@@ -22,11 +22,16 @@ keywords = ["python", "pyfilemetre", "cli", "code analysis", "AST", "metrics", "
 
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers"
 ]
 
+[project.scripts]
+pyfilemetre = "pyfilemetre.cli:main"
+
 [project.urls]
 Homepage = "https://pypi.org/project/pyfilemetre/"
+
+# pyproject.toml doesn't contain actual Python logic. It describes the project and tells 
+# Python's packaging ecosystem how to build, identify, install and distribute that project.
